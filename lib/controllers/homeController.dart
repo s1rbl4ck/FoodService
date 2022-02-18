@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class HomeController extends GetxController {
   // Agreeing with App Rules
@@ -7,6 +8,8 @@ class HomeController extends GetxController {
   var number = '09*********'.obs;
   var walletValue = '1,415,000'.obs;
   var isDataRecieved = false.obs;
+  var currentSlide = 0.obs;
+  final CarouselController sliderController = CarouselController();
 
   void setName(value) {
     name.value = value;
@@ -22,5 +25,9 @@ class HomeController extends GetxController {
 
   void setIsDataRecieved(value) {
     isDataRecieved.value = value;
+  }
+
+  void setCurrentSlide(value) {
+    currentSlide.value = value;
   }
 }
