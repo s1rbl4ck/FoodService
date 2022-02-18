@@ -33,7 +33,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     double sizeH = SizeConfig.blockSizeH!;
     double sizeV = SizeConfig.blockSizeV!;
     return Scaffold(
-      backgroundColor: Color(0xFFffcc2a),
+      backgroundColor: fSecondaryColor,
       body: Column(
         children: [
           Expanded(

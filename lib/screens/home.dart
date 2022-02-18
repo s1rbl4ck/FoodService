@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:foodservice/app_styles.dart';
+import 'package:foodservice/controllers/bottomNavigationController.dart';
 import 'package:foodservice/controllers/homeController.dart';
+import 'package:foodservice/widgets/home/homeAppBarWidget.dart';
+import 'package:foodservice/widgets/search/searchAppBarWidget.dart';
+import 'package:foodservice/widgets/search/searchScreenWidget.dart';
 import 'package:get/get.dart';
 import 'package:foodservice/widgets/shimmer/mainFoodWidget.Dart';
 import 'package:foodservice/widgets/shimmer/mainBannerWidget.dart';
 import 'package:foodservice/widgets/shimmer/mainProfileWidget.dart';
 import 'package:foodservice/widgets/drawerWidget.dart';
 import 'package:foodservice/widgets/bottomNavigatorWidget.dart';
-import 'package:foodservice/widgets/home/homeScreenWidget.dart';
+import 'package:foodservice/widgets/home/indexScreenWidget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -33,75 +36,63 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Widget routeContent() {
+      if (Get.find<HomeController>().isDataRecieved.value) {
+        switch (Get.find<BNavigationController>().selectedIndex.value) {
+          case 0:
+            return HomeScreenWidget();
+          case 1:
+            return SearchScreenWidget();
+          case 2:
+            return Text('Basket Screen');
+          case 3:
+            return Text('Receipt Screen');
+          case 4:
+            return Text('Map Screen');
+          default:
+            return Text('No Where');
+        }
+      } else {
+        return Column(
+          children: [
+            ShimmerBannerWidget(),
+            ShimmerProfilesWidget(),
+            ShimmerFoodWidget(),
+            ShimmerFoodWidget(),
+            ShimmerFoodWidget(),
+            ShimmerFoodWidget(),
+          ],
+        );
+      }
+    }
+
+    AppBar appBarRoute() {
+      switch (Get.find<BNavigationController>().selectedIndex.value) {
+        case 0:
+          return HomeAppBarWidget();
+        case 1:
+          return SearchAppBarWidget();
+        case 2:
+          return HomeAppBarWidget();
+        case 3:
+          return HomeAppBarWidget();
+        case 4:
+          return HomeAppBarWidget();
+        default:
+          return HomeAppBarWidget();
+      }
+    }
+
     return Directionality(
       textDirection: TextDirection.rtl,
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: fSecondaryColor,
-          elevation: 0,
-          foregroundColor: fTeritaryColor,
-          title: TextButton(
-            onPressed: () {},
-            child: Row(
-              children: [
-                Container(
-                  padding: EdgeInsets.all(3),
-                  margin: EdgeInsets.only(left: 5),
-                  decoration: BoxDecoration(
-                    color: Color(0xFFFFFFFF).withOpacity(0.3),
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: fTeritaryColor),
-                  ),
-                  child: Icon(
-                    Icons.location_pin,
-                    color: fTeritaryColor,
-                  ),
-                ),
-                Text(
-                  'انتخاب موقعیت مکانی',
-                  style: TextStyle(color: fTeritaryColor, fontSize: 17),
-                ),
-                Icon(
-                  Icons.arrow_drop_down_rounded,
-                  size: 35,
-                  color: fTeritaryColor,
-                ),
-              ],
-            ),
-          ),
-          actions: [
-            Container(
-              margin: EdgeInsets.only(left: 10),
-              child: Row(
-                children: [
-                  // Container(
-                  //   child:
-                  // ),
-                  Icon(
-                    Icons.notifications,
-                    color: fTeritaryColor,
-                  ),
-                ],
-              ),
-            )
-          ],
-        ),
-        drawer: CustomDrawer(),
-        bottomNavigationBar: BottomNavigator(),
-        body: Obx(
-          () => SingleChildScrollView(
-            child: !Get.find<HomeController>().isDataRecieved.value
-                ? Column(
-                    children: [
-                      ShimmerBannerWidget(),
-                      ShimmerProfilesWidget(),
-                      ShimmerFoodWidget(),
-                      ShimmerFoodWidget(),
-                      ShimmerFoodWidget(),
-                      ShimmerFoodWidget(),
-                    ],
-                  )
-                : HomeScreenWidget(),
+      child: Obx(
+        () => Scaffold(
+          resizeToAvoidBottomInset: false,
+          appBar: appBarRoute(),
+          drawer: CustomDrawer(),
+          bottomNavigationBar: BottomNavigator(),
+          body: SingleChildScrollView(
+            child: routeContent(),
           ),
         ),
       ),
