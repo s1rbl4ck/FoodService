@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:foodservice/app_styles.dart';
 import 'package:foodservice/controllers/homeController.dart';
 import 'package:foodservice/model/sliderModel.dart';
-import 'package:foodservice/widgets/home/categoriesWidget.dart';
-import 'package:foodservice/widgets/home/foodItemWidget.dart';
-import 'package:foodservice/widgets/home/restaurantItemWidget.dart';
+import 'package:foodservice/widgets/home/categories.dart';
+import 'package:foodservice/widgets/home/foodItem.dart';
+import 'package:foodservice/widgets/home/restaurantItem.dart';
 import 'package:get/get.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
