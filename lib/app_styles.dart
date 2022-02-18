@@ -4,10 +4,11 @@ import './size_configs.dart';
 
 Color fPrimaryColor = Color(0xFFffffff);
 Color fPrimaryColorBlured = Color(0xFFffffff).withOpacity(0.5);
-// Color fPrimaryBackgroundDefault = ;
+Color fPrimaryBackground = Color(0xFFecf0f1);
 Color fSecondaryColor = Color(0xFFffcc2a);
-Color fTeritaryColor = Color(0xFF34495e);
+Color fTeritaryColor = Color(0xFF000000);
 Color fTertiary = Color(0xFFF1F1FB);
+double CoverImageSize = 200;
 
 final fOnBoardingTitle = TextStyle(
   fontWeight: FontWeight.bold,
