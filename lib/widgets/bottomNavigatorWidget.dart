@@ -6,8 +6,10 @@ import 'package:foodservice/app_styles.dart';
 import 'package:ionicons/ionicons.dart';
 
 class BottomNavigator extends StatelessWidget {
+  //
+  var inst = Get.find<BNavigationController>();
   void changeScreen(index) {
-    Get.find<BNavigationController>().changeIndex(index);
+    inst.changeIndex(index);
   }
 
   @override
@@ -18,37 +20,29 @@ class BottomNavigator extends StatelessWidget {
       color: fSecondaryColor,
       items: <Widget>[
         Icon(
-          Get.find<BNavigationController>().selectedIndex == 0
-              ? Ionicons.home
-              : Ionicons.home_outline,
+          inst.selectedIndex == 0 ? Ionicons.home : Ionicons.home_outline,
           size: 30,
           color: fTeritaryColor,
         ),
         Icon(
-          Get.find<BNavigationController>().selectedIndex == 1
-              ? Ionicons.search
-              : Ionicons.search_outline,
+          inst.selectedIndex == 1 ? Ionicons.search : Ionicons.search_outline,
           size: 30,
           color: fTeritaryColor,
         ),
         Icon(
-          Get.find<BNavigationController>().selectedIndex == 2
+          inst.selectedIndex == 2
               ? Ionicons.basket_outline
               : Ionicons.basket_outline,
           size: 30,
           color: fTeritaryColor,
         ),
         Icon(
-          Get.find<BNavigationController>().selectedIndex == 3
-              ? Ionicons.receipt
-              : Ionicons.receipt_outline,
+          inst.selectedIndex == 3 ? Ionicons.receipt : Ionicons.receipt_outline,
           size: 30,
           color: fTeritaryColor,
         ),
         Icon(
-          Get.find<BNavigationController>().selectedIndex == 4
-              ? Ionicons.map
-              : Ionicons.map_outline,
+          inst.selectedIndex == 4 ? Ionicons.map : Ionicons.map_outline,
           size: 30,
           color: fTeritaryColor,
         ),

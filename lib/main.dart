@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodservice/bindings/bindings.dart';
 import 'package:get/get.dart';
-import 'package:foodservice/screens/home.dart';
+import 'package:foodservice/screens/index.dart';
 import 'package:foodservice/screens/auth.dart';
 import 'package:foodservice/screens/onboarding.dart';
 import 'package:get_storage/get_storage.dart';
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/home', page: () => HomeScreen()),
       ],
       initialBinding: AppBindings(),
-      initialRoute: '/home',
+      initialRoute: '/onboarding',
     );
   }
 }

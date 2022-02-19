@@ -20,6 +20,9 @@ class HomeScreenWidget extends StatefulWidget {
 class _HomeScreenWidgetState extends State<HomeScreenWidget> {
   @override
   Widget build(BuildContext context) {
+    // Home Controller
+    var inst = Get.find<HomeController>();
+
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -40,15 +43,14 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                   Expanded(
                     child: CarouselSlider(
                       items: imageSliders,
-                      carouselController:
-                          Get.find<HomeController>().sliderController,
+                      carouselController: inst.sliderController,
                       options: CarouselOptions(
                         autoPlay: true,
                         enlargeCenterPage: true,
                         viewportFraction: 1,
                         aspectRatio: 2.0,
                         onPageChanged: (index, reason) {
-                          Get.find<HomeController>().setCurrentSlide(index);
+                          inst.setCurrentSlide(index);
                         },
                       ),
                     ),

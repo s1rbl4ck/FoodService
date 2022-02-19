@@ -21,6 +21,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  // Bottom Navigator Controller
+  var inst = Get.find<BNavigationController>();
+
   void replaceShimmer() {
     Get.find<HomeController>().isDataRecieved.value =
         !Get.find<HomeController>().isDataRecieved.value;
@@ -39,7 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     Widget routeContent() {
       if (Get.find<HomeController>().isDataRecieved.value) {
-        switch (Get.find<BNavigationController>().selectedIndex.value) {
+        switch (inst.selectedIndex.value) {
           case 0:
             return HomeScreenWidget();
           case 1:
@@ -68,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
     }
 
     AppBar appBarRoute() {
-      switch (Get.find<BNavigationController>().selectedIndex.value) {
+      switch (inst.selectedIndex.value) {
         case 0:
           return HomeAppBarWidget();
         case 1:

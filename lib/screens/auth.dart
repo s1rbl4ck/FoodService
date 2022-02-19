@@ -10,11 +10,13 @@ class AuthScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Auth Controller
+    var inst = Get.find<AuthController>();
+
     // Size
     SizeConfig().init(context);
     double sizeH = SizeConfig.blockSizeH!;
     double sizeV = SizeConfig.blockSizeV!;
-    print(Get.find<AuthController>().isActiveButton.value);
 
     void Authenticate() async {
       try {
@@ -57,7 +59,7 @@ class AuthScreen extends StatelessWidget {
                     Container(
                       child: TextField(
                         onChanged: (value) {
-                          Get.find<AuthController>().changeInputVal(value);
+                          inst.changeInputVal(value);
                         },
                         textAlign: TextAlign.center,
                         keyboardType: TextInputType.number,
@@ -65,7 +67,7 @@ class AuthScreen extends StatelessWidget {
                           FilteringTextInputFormatter.allow(
                               RegExp(r'^0[0-9]*')),
                         ],
-                        // controller: Get.find<AuthController>().authInput,
+                        // controller: inst.authInput,
                         decoration: fAuthInput,
                       ),
                     ),
@@ -78,12 +80,11 @@ class AuthScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: ElevatedButton(
-                          onPressed:
-                              Get.find<AuthController>().isActiveButton.value
-                                  ? () {
-                                      Authenticate();
-                                    }
-                                  : null,
+                          onPressed: inst.isActiveButton.value
+                              ? () {
+                                  Authenticate();
+                                }
+                              : null,
                           child: Text(
                             'ورود',
                             style: TextStyle(fontSize: 20),
@@ -107,12 +108,12 @@ class AuthScreen extends StatelessWidget {
                           Obx(
                             () => Checkbox(
                               checkColor: Colors.white,
-                              value: Get.find<AuthController>().ruleCheck.value,
+                              value: inst.ruleCheck.value,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(4)),
                               activeColor: fSecondaryColor,
                               onChanged: (bool? value) {
-                                Get.find<AuthController>().ToggleRule();
+                                inst.ToggleRule();
                               },
                             ),
                           ),

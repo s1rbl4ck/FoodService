@@ -5,6 +5,7 @@ import 'package:foodservice/app_styles.dart';
 import 'dart:ui' show ImageFilter;
 
 class CustomDrawer extends StatelessWidget {
+  var inst = Get.find<HomeController>();
   Widget build(BuildContext context) {
     final padding = EdgeInsets.symmetric(horizontal: 20);
     return ClipPath(
@@ -23,10 +24,10 @@ class CustomDrawer extends StatelessWidget {
                   padding: padding,
                   children: [
                     DrawerHeader(
-                      urlImage: Get.find<HomeController>().urlImage.value,
-                      name: Get.find<HomeController>().name.value,
-                      number: Get.find<HomeController>().number.value,
-                      walletValue: Get.find<HomeController>().walletValue.value,
+                      urlImage: inst.urlImage.value,
+                      name: inst.name.value,
+                      number: inst.number.value,
+                      walletValue: inst.walletValue.value,
                     ),
                     const SizedBox(height: 5),
                     Divider(color: Colors.white70),

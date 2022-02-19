@@ -97,7 +97,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
               onPressed: () {
                 if (currentIndex == contents.length - 1) {
-                  Get.offNamed('/auth');
+                  Get.offNamed(
+                    '/auth',
+                  );
                 }
                 _controller.nextPage(
                     duration: Duration(milliseconds: 400),
