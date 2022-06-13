@@ -44,6 +44,9 @@ dependencies:
   carousel_slider: ^4.0.0
   material_floating_search_bar: ^0.3.6
   ionicons: ^0.1.2
+  dio: ^4.0.4
+  google_maps_flutter: ^2.1.1
+  pinput: ^1.2.2
 
 dev_dependencies:
   flutter_test:

@@ -57,15 +57,17 @@ class _HomeScreenState extends State<HomeScreen> {
             return Text('No Where');
         }
       } else {
-        return Column(
-          children: [
-            ShimmerBannerWidget(),
-            ShimmerProfilesWidget(),
-            ShimmerFoodWidget(),
-            ShimmerFoodWidget(),
-            ShimmerFoodWidget(),
-            ShimmerFoodWidget(),
-          ],
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              ShimmerBannerWidget(),
+              ShimmerProfilesWidget(),
+              ShimmerFoodWidget(),
+              ShimmerFoodWidget(),
+              ShimmerFoodWidget(),
+              ShimmerFoodWidget(),
+            ],
+          ),
         );
       }
     }

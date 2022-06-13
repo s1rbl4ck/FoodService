@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:foodservice/bindings/bindings.dart';
+import 'package:foodservice/screens/authCode.dart';
+import 'package:foodservice/screens/infoGet.dart';
 import 'package:get/get.dart';
 import 'package:foodservice/screens/index.dart';
 import 'package:foodservice/screens/auth.dart';
@@ -24,7 +26,19 @@ class MyApp extends StatelessWidget {
       // App Routes
       getPages: [
         GetPage(name: '/onboarding', page: () => OnboardingScreen()),
-        GetPage(name: '/auth', page: () => AuthScreen()),
+        GetPage(
+          name: '/auth',
+          page: () => AuthScreen(),
+          transition: Transition.fade,
+          transitionDuration: Duration(milliseconds: 500),
+        ),
+        GetPage(
+          name: '/authCode',
+          page: () => AuthCodeScreen(),
+          transition: Transition.rightToLeft,
+          transitionDuration: Duration(milliseconds: 500),
+        ),
+        GetPage(name: '/infoGet', page: () => infoGetScreen()),
         GetPage(name: '/home', page: () => HomeScreen()),
       ],
       initialBinding: AppBindings(),

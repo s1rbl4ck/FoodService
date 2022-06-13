@@ -8,7 +8,9 @@ Color fPrimaryBackground = Color(0xFFecf0f1);
 Color fSecondaryColor = Color(0xFFffcc2a);
 Color fTeritaryColor = Color(0xFF000000);
 Color fTertiary = Color(0xFFF1F1FB);
+Color fSuccess = Color(0xFF27ae60);
 double CoverImageSize = 200;
+int CodeTimeOut = 120; // Seconds
 
 final fOnBoardingTitle = TextStyle(
   fontWeight: FontWeight.bold,

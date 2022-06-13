@@ -6,24 +6,23 @@ import 'package:foodservice/size_configs.dart';
 import 'package:get/get.dart';
 
 class AuthScreen extends StatelessWidget {
-  const AuthScreen({Key? key}) : super(key: key);
+  AuthScreen({Key? key}) : super(key: key);
+  // Auth Controller
+  var inst = Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
-    // Auth Controller
-    var inst = Get.find<AuthController>();
-
     // Size
     SizeConfig().init(context);
-    double sizeH = SizeConfig.blockSizeH!;
     double sizeV = SizeConfig.blockSizeV!;
 
-    void Authenticate() async {
+    void sendCode() async {
       try {
+        inst.incrementTimeOut(CodeTimeOut);
         // var url = Uri.http('apiUrl', '/api/auth/$authInput');
         // var response = await http.post(url);
         // Get.toNamed('/code');
-        Get.offNamed('/home');
+        Get.toNamed('/authCode');
       } catch (e) {
         print('caught error: $e');
       }
@@ -82,7 +81,7 @@ class AuthScreen extends StatelessWidget {
                         child: ElevatedButton(
                           onPressed: inst.isActiveButton.value
                               ? () {
-                                  Authenticate();
+                                  sendCode();
                                 }
                               : null,
                           child: Text(

@@ -20,7 +20,7 @@ class BottomNavigator extends StatelessWidget {
       color: fSecondaryColor,
       items: <Widget>[
         Icon(
-          inst.selectedIndex == 0 ? Ionicons.home : Ionicons.home_outline,
+          inst.selectedIndex == 0 ? Ionicons.home : Ionicons.home,
           size: 30,
           color: fTeritaryColor,
         ),

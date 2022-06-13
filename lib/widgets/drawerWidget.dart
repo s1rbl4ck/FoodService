@@ -142,7 +142,7 @@ void selectedIndex(BuildContext context, int index) {
       Get.toNamed('/about');
       break;
     case 4:
-      Get.toNamed('/logout');
+      Get.offAllNamed('/auth');
       break;
   }
 }
